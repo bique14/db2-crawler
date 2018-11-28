@@ -14,11 +14,11 @@ class App extends Component {
     this.state = {
       keyWord: '',
       all: [],
-      countries: {}
+      countries: []
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     fetch('/filter', {
       method: 'POST',
       headers: {
@@ -50,29 +50,13 @@ class App extends Component {
 
   getCountry() {
     const { all } = this.state
-    console.log(all.countries)
-    console.log(typeof all.countries)
-    // all.countries.map(i => {
-    //   console.log(i)
-    // })
-    // var BreakException = {}
-    // let bool = false
-    // try {
-    //   Object.keys(all).map(i => {
-    //     console.log(i)
-    //     if (i === "authors") {
-    //       bool = true
-    //       throw BreakException
-    //     } else {
-    //       return all[i].map((data, index) => {
-    //         bool = false
-    //         console.log(data)
-    //       })
-    //     }
-    //   })
-    // } catch (e) {
-    //   if (e !== BreakException) throw e
-    // }
+    // console.log(all.countries)
+    var aCountry = []
+    all.countries && all.countries.map(i => {
+      aCountry.push(i)
+    })
+    // console.log(aCountry)
+    return aCountry
   }
 
   getTopRank() {
@@ -121,8 +105,29 @@ class App extends Component {
   }
 
   createGraph() {
+    const { all } = this.state
+    // var graph = {
+    //   labels: [mockPeople[0].name, mockPeople[1].name, mockPeople[2].name, mockPeople[3].name, mockPeople[4].name, mockPeople[5].name, mockPeople[6].name, mockPeople[7].name, mockPeople[8].name, mockPeople[9].name],
+    //   datasets: [
+    //     {
+    //       label: "My First dataset",
+    //       fillColor: "rgba(220,220,220,0.5)",
+    //       strokeColor: "rgba(220,220,220,0.8)",
+    //       highlightFill: "rgba(220,220,220,0.75)",
+    //       highlightStroke: "rgba(220,220,220,1)",
+    //       data: [mockPeople[9].amount, mockPeople[1].amount, mockPeople[2].amount, mockPeople[3].amount, mockPeople[4].amount, mockPeople[5].amount, mockPeople[6].amount, mockPeople[7].amount, mockPeople[8].amount, mockPeople[9].amount]
+    //     }
+    //   ]
+    // }
+
+    const people = []
+    this.getTopRank() && this.getTopRank().map(data => {
+      people.push(data)
+    })
+
+    console.log(people.length && people[0].name)
     var graph = {
-      labels: [mockPeople[0].name, mockPeople[1].name, mockPeople[2].name, mockPeople[3].name, mockPeople[4].name, mockPeople[5].name, mockPeople[6].name, mockPeople[7].name, mockPeople[8].name, mockPeople[9].name],
+      labels: [people.length && people[0].name, people.length && people[1].name, people.length && people[2].name, people.length && people[3].name, people.length && people[4].name, people.length && people[5].name, people.length && people[6].name, people.length && people[7].name, people.length && people[8].name, people.length && people[9].name],
       datasets: [
         {
           label: "My First dataset",
@@ -130,28 +135,10 @@ class App extends Component {
           strokeColor: "rgba(220,220,220,0.8)",
           highlightFill: "rgba(220,220,220,0.75)",
           highlightStroke: "rgba(220,220,220,1)",
-          data: [mockPeople[0].amount, mockPeople[1].amount, mockPeople[2].amount, mockPeople[3].amount, mockPeople[4].amount, mockPeople[5].amount, mockPeople[6].amount, mockPeople[7].amount, mockPeople[8].amount, mockPeople[9].amount]
+          data: [people.length && people[0].count, people.length && people[1].count, people.length && people[2].count, people.length && people[3].count, people.length && people[4].count, people.length && people[5].count, people.length && people[6].count, people.length && people[7].count, people.length && people[8].count, people.length && people[9].count],
         }
       ]
     }
-
-    // this.getTopRank().map((data, index) => {
-    //   console.log(data[index])
-    //   var graph = {
-    //     labels: [data[0].name, data[1].name, data[2].name, data[3].name, data[4].name, data[5].name, data[6].name, data[7].name, data[8].name, data[9].name],
-    //     datasets: [
-    //       {
-    //         label: "My First dataset",
-    //         fillColor: "rgba(220,220,220,0.5)",
-    //         strokeColor: "rgba(220,220,220,0.8)",
-    //         highlightFill: "rgba(220,220,220,0.75)",
-    //         highlightStroke: "rgba(220,220,220,1)",
-    //         data: [data[0].count, data[1].count, data[2].count, data[3].count, data[4].count, data[5].count, data[6].count, data[7].count, data[8].count, data[9].count]
-    //       }
-    //     ]
-    //   }
-    // })
-
     return graph
   }
 
@@ -227,7 +214,7 @@ class App extends Component {
           </TableBody>
         </Table>
 
-        <ChoroplethExample />
+        <ChoroplethExample country={this.getCountry()} />
       </div>
     );
   }

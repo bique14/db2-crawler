@@ -60,6 +60,7 @@ export default class ChoroplethExample extends React.Component {
 	}
 
 	render() {
+		// console.log(this.props.country)
 		return (
 			<Example>
 				<Datamap
