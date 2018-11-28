@@ -6,21 +6,6 @@ import { Table, TableBody } from "semantic-ui-react";
 import ChoroplethExample from './maps/choropleth-example'
 import { mockPeople } from './data'
 
-
-var data = {
-  labels: [mockPeople[0].name, mockPeople[1].name, mockPeople[2].name, mockPeople[3].name, mockPeople[4].name, mockPeople[5].name, mockPeople[6].name, mockPeople[7].name, mockPeople[8].name, mockPeople[9].name],
-  datasets: [
-    {
-      label: "My First dataset",
-      fillColor: "rgba(220,220,220,0.5)",
-      strokeColor: "rgba(220,220,220,0.8)",
-      highlightFill: "rgba(220,220,220,0.75)",
-      highlightStroke: "rgba(220,220,220,1)",
-      data: [mockPeople[0].amount, mockPeople[1].amount, mockPeople[2].amount, mockPeople[3].amount, mockPeople[4].amount, mockPeople[5].amount, mockPeople[6].amount, mockPeople[7].amount, mockPeople[8].amount, mockPeople[9].amount]
-    }
-  ]
-};
-
 var BarChart = require("react-chartjs").Bar;
 
 class App extends Component {
@@ -29,20 +14,7 @@ class App extends Component {
     this.state = {
       keyWord: '',
       all: [],
-
-      data: {
-        labels: [],
-        datasets: [
-          {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.5)",
-            strokeColor: "rgba(220,220,220,0.8)",
-            highlightFill: "rgba(220,220,220,0.75)",
-            highlightStroke: "rgba(220,220,220,1)",
-            data: []
-          }
-        ]
-      }
+      countries: {}
     }
   }
 
@@ -59,17 +31,12 @@ class App extends Component {
       })
     }).then(res => res.json())
       .then(dat => {
-        // arr.push(data)
         this.setState(prevState => {
           return {
             ...prevState,
             all: dat,
           }
         })
-        // this.setState({
-        //   all: dat,
-        //   data: 
-        // }, () => console.log(this.state.all))
       })
   }
 
@@ -81,6 +48,33 @@ class App extends Component {
   //   console.log(authors)
   // }
 
+  getCountry() {
+    const { all } = this.state
+    console.log(all.countries)
+    console.log(typeof all.countries)
+    // all.countries.map(i => {
+    //   console.log(i)
+    // })
+    // var BreakException = {}
+    // let bool = false
+    // try {
+    //   Object.keys(all).map(i => {
+    //     console.log(i)
+    //     if (i === "authors") {
+    //       bool = true
+    //       throw BreakException
+    //     } else {
+    //       return all[i].map((data, index) => {
+    //         bool = false
+    //         console.log(data)
+    //       })
+    //     }
+    //   })
+    // } catch (e) {
+    //   if (e !== BreakException) throw e
+    // }
+  }
+
   getTopRank() {
     const { all } = this.state
     var rows = []
@@ -88,16 +82,21 @@ class App extends Component {
     let bool = false
     try {
       Object.keys(all).map(i => {
-        return all[i].map((data, index) => {
-          if (index >= 10) {
-            bool = true
-            throw BreakException
-          }
-          else {
-            bool = false
-            rows.push(data)
-          }
-        })
+        if (i === "countries") {
+          bool = true
+          throw BreakException
+        } else {
+          return all[i].map((data, index) => {
+            if (index >= 10) {
+              bool = true
+              throw BreakException
+            }
+            else {
+              bool = false
+              rows.push(data)
+            }
+          })
+        }
       })
     } catch (e) {
       if (e !== BreakException) throw e
@@ -107,27 +106,6 @@ class App extends Component {
   }
 
   createTable() {
-    // const { all } = this.state
-    // const rows = 
-    // var BreakException = {}
-    // let bool = false
-    // try {
-    //   Object.keys(all).map(i => {
-    //     return all[i].map((data, index) => {
-    //       if (index >= 10) {
-    //         bool = true
-    //         throw BreakException
-    //       }
-    //       else {
-    //         bool = false
-    //         rows.push(data)
-    //       }
-    //     })
-    //   })
-    // } catch (e) {
-    //   if (e !== BreakException) throw e
-    // }
-
     return this.getTopRank().map((data, index) => {
       const { name, email, count, affiliation } = data
       return (
@@ -142,28 +120,40 @@ class App extends Component {
     })
   }
 
-  // createGraph() {
-  //   const { all } = this.state
-  //   var BreakException = {}
-  //   let bool = false
-  //   try {
-  //     Object.keys(all).map(i => {
-  //       return all[i].map((data, index) => {
-  //         if (index >= 10) {
-  //           bool = true
-  //           throw BreakException
-  //         }
-  //         else {
-  //           bool = false
-  //           rows.push(data)
-  //         }
-  //       })
-  //     })
-  //   } catch (e) {
-  //     if (e !== BreakException) throw e
-  //   }
+  createGraph() {
+    var graph = {
+      labels: [mockPeople[0].name, mockPeople[1].name, mockPeople[2].name, mockPeople[3].name, mockPeople[4].name, mockPeople[5].name, mockPeople[6].name, mockPeople[7].name, mockPeople[8].name, mockPeople[9].name],
+      datasets: [
+        {
+          label: "My First dataset",
+          fillColor: "rgba(220,220,220,0.5)",
+          strokeColor: "rgba(220,220,220,0.8)",
+          highlightFill: "rgba(220,220,220,0.75)",
+          highlightStroke: "rgba(220,220,220,1)",
+          data: [mockPeople[0].amount, mockPeople[1].amount, mockPeople[2].amount, mockPeople[3].amount, mockPeople[4].amount, mockPeople[5].amount, mockPeople[6].amount, mockPeople[7].amount, mockPeople[8].amount, mockPeople[9].amount]
+        }
+      ]
+    }
 
-  // }
+    // this.getTopRank().map((data, index) => {
+    //   console.log(data[index])
+    //   var graph = {
+    //     labels: [data[0].name, data[1].name, data[2].name, data[3].name, data[4].name, data[5].name, data[6].name, data[7].name, data[8].name, data[9].name],
+    //     datasets: [
+    //       {
+    //         label: "My First dataset",
+    //         fillColor: "rgba(220,220,220,0.5)",
+    //         strokeColor: "rgba(220,220,220,0.8)",
+    //         highlightFill: "rgba(220,220,220,0.75)",
+    //         highlightStroke: "rgba(220,220,220,1)",
+    //         data: [data[0].count, data[1].count, data[2].count, data[3].count, data[4].count, data[5].count, data[6].count, data[7].count, data[8].count, data[9].count]
+    //       }
+    //     ]
+    //   }
+    // })
+
+    return graph
+  }
 
   onKeyWordChange(event) {
     const { value } = event.target
@@ -176,24 +166,30 @@ class App extends Component {
   }
 
   onSubmit() {
-    console.log(this.state.keyWord)
-    // fetch('/filter', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'cache-control': 'no-cache',
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     keyword: 'DRB'
-    //   })
-    // }).then(res => res.json())
-    //   .then(data => {
-    //     console.log(data)
-    //   })
+    const { keyWord } = this.state
+    fetch('/filter', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'cache-control': 'no-cache',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        keyword: keyWord
+      })
+    }).then(res => res.json())
+      .then(dat => {
+        this.setState(prevState => {
+          return {
+            ...prevState,
+            all: dat,
+          }
+        })
+      })
   }
 
   render() {
+    this.getCountry()
     return (
       <div className="App">
         <Form style={{ width: "60%", margin: "auto" }}>
@@ -211,7 +207,7 @@ class App extends Component {
           </Button>
         </Form>
         <div style={{ marginBottom: "30px", marginTop: "30px", textAlign: "center" }}>
-          <BarChart data={data} options={chartOptions} width="1500" height="500" />
+          <BarChart data={this.createGraph()} options={chartOptions} width="1500" height="500" />
         </div>
 
         <Table singleLine
