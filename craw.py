@@ -403,7 +403,7 @@ def scienceDirect(input, name, first, last):
     # workbook.close()
 
 if __name__ == "__main__":
-    search = ["nosql", "database", "mongodb"]
+    search = ["memory", "data", "cloud"]
 
     for i, item in enumerate(search):
         start_time = time.time() # time for execute
