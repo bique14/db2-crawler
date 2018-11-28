@@ -404,7 +404,7 @@ def scienceDirect(input, name, first, last):
 
 if __name__ == "__main__":
     search = ["moral", "high", "down", "low", "match", "music", "egg", "number"]
-    # search = ["doc"]
+
     for i, item in enumerate(search):
         start_time = time.time() # time for execute
         now = datetime.datetime.now() # now time
