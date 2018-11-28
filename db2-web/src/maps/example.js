@@ -16,7 +16,7 @@ export default class Example extends React.Component {
 				<h3 className="Example-label">{this.props.label}</h3>
 				<div className={`Example-map ${this.props.additionalClasses}`}
 					style={this.props.mapStyle}
-        >
+				>
 					{React.Children.only(this.props.children)}
 				</div>
 			</div>

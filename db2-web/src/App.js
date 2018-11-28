@@ -98,8 +98,7 @@ class App extends Component {
               <Table.Cell>jilsewris22@yahoo.com</Table.Cell>
               <Table.Cell>180</Table.Cell>
             </Table.Row>
-      {this.addTable()}
-
+            {this.addTable()}
           </Table.Body>
         </Table>
 
