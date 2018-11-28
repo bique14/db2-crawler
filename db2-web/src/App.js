@@ -105,29 +105,8 @@ class App extends Component {
   }
 
   createGraph() {
-    const { all } = this.state
-    // var graph = {
-    //   labels: [mockPeople[0].name, mockPeople[1].name, mockPeople[2].name, mockPeople[3].name, mockPeople[4].name, mockPeople[5].name, mockPeople[6].name, mockPeople[7].name, mockPeople[8].name, mockPeople[9].name],
-    //   datasets: [
-    //     {
-    //       label: "My First dataset",
-    //       fillColor: "rgba(220,220,220,0.5)",
-    //       strokeColor: "rgba(220,220,220,0.8)",
-    //       highlightFill: "rgba(220,220,220,0.75)",
-    //       highlightStroke: "rgba(220,220,220,1)",
-    //       data: [mockPeople[9].amount, mockPeople[1].amount, mockPeople[2].amount, mockPeople[3].amount, mockPeople[4].amount, mockPeople[5].amount, mockPeople[6].amount, mockPeople[7].amount, mockPeople[8].amount, mockPeople[9].amount]
-    //     }
-    //   ]
-    // }
-
-    const people = []
-    this.getTopRank() && this.getTopRank().map(data => {
-      people.push(data)
-    })
-
-    console.log(people.length && people[0].name)
     var graph = {
-      labels: [people.length && people[0].name, people.length && people[1].name, people.length && people[2].name, people.length && people[3].name, people.length && people[4].name, people.length && people[5].name, people.length && people[6].name, people.length && people[7].name, people.length && people[8].name, people.length && people[9].name],
+      labels: [mockPeople[0].name, mockPeople[1].name, mockPeople[2].name, mockPeople[3].name, mockPeople[4].name, mockPeople[5].name, mockPeople[6].name, mockPeople[7].name, mockPeople[8].name, mockPeople[9].name],
       datasets: [
         {
           label: "My First dataset",
@@ -135,7 +114,48 @@ class App extends Component {
           strokeColor: "rgba(220,220,220,0.8)",
           highlightFill: "rgba(220,220,220,0.75)",
           highlightStroke: "rgba(220,220,220,1)",
-          data: [people.length && people[0].count, people.length && people[1].count, people.length && people[2].count, people.length && people[3].count, people.length && people[4].count, people.length && people[5].count, people.length && people[6].count, people.length && people[7].count, people.length && people[8].count, people.length && people[9].count],
+          data: [mockPeople[9].amount, mockPeople[1].amount, mockPeople[2].amount, mockPeople[3].amount, mockPeople[4].amount, mockPeople[5].amount, mockPeople[6].amount, mockPeople[7].amount, mockPeople[8].amount, mockPeople[9].amount]
+        }
+      ]
+    }
+
+    const people = []
+    this.getTopRank() && this.getTopRank().map(data => {
+      people.push(data)
+    })
+
+    var graph = {
+      labels: [
+        people.length && people[0].name,
+        people.length && people[1].name,
+        people.length && people[2].name,
+        people.length && people[3].name,
+        people.length && people[4].name,
+        people.length && people[5].name,
+        people.length && people[6].name,
+        people.length && people[7].name,
+        people.length && people[8].name,
+        people.length && people[9].name
+      ],
+      datasets: [
+        {
+          label: "My First dataset",
+          fillColor: "rgba(220,220,220,0.5)",
+          strokeColor: "rgba(220,220,220,0.8)",
+          highlightFill: "rgba(220,220,220,0.75)",
+          highlightStroke: "rgba(220,220,220,1)",
+          data: [
+            people.length && people[0].count,
+            people.length && people[1].count,
+            people.length && people[2].count,
+            people.length && people[3].count,
+            people.length && people[4].count,
+            people.length && people[5].count,
+            people.length && people[6].count,
+            people.length && people[7].count,
+            people.length && people[8].count,
+            people.length && people[9].count
+          ],
         }
       ]
     }

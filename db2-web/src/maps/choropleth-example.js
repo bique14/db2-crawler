@@ -28,7 +28,7 @@ export default class ChoroplethExample extends React.Component {
 		clearInterval(this.interval);
 	}
 
-	update() {
+	update(country) {
 		// const arr = ["USA", "RUS", "AUS", "THA"]
 		// var _dict = []
 		// arr.map(i => {
@@ -42,7 +42,7 @@ export default class ChoroplethExample extends React.Component {
 		// 	i["RUS"] ? console.log(i.RUS) 
 		// 	: "" 
 		// })
-
+		console.log(this.props.country)
 		this.interval = setInterval(() => {
 			this.setState({
 				data: {
@@ -60,7 +60,7 @@ export default class ChoroplethExample extends React.Component {
 	}
 
 	render() {
-		// console.log(this.props.country)
+		
 		return (
 			<Example>
 				<Datamap
