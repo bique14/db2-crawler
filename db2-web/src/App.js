@@ -40,14 +40,6 @@ class App extends Component {
       })
   }
 
-  // async sortCount() {
-  //   const { authors } = this.state.all
-  //   console.log(authors)
-
-  //   await authors.sort((a,b) => (a.count > b.count) ? - 1 : ((b.count > a.count) ? 1 : 0))
-  //   console.log(authors)
-  // }
-
   getCountry() {
     const { all } = this.state
     // console.log(all.countries)
@@ -89,8 +81,14 @@ class App extends Component {
     return rows
   }
 
+  sortCount() {
+    const sortCountr = this.getTopRank() && this.getTopRank().sort((a, b) => (a.count < b.count) ? 1 : ((b.count < a.count) ? - 1 : 0))
+    // console.log(sortCountr)
+    return sortCountr
+  }
+
   createTable() {
-    return this.getTopRank().map((data, index) => {
+    return this.sortCount().map((data, index) => {
       const { name, email, count, affiliation } = data
       return (
         <Table.Row className="rows" key={index}>
@@ -120,7 +118,7 @@ class App extends Component {
     }
 
     const people = []
-    this.getTopRank() && this.getTopRank().map(data => {
+    this.sortCount() && this.sortCount().map(data => {
       people.push(data)
     })
 
@@ -196,7 +194,9 @@ class App extends Component {
   }
 
   render() {
+    this.sortCount()
     this.getCountry()
+
     return (
       <div className="App">
         <Form style={{ width: "60%", margin: "auto" }}>

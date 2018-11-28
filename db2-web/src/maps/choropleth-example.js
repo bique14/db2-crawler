@@ -17,7 +17,8 @@ export default class ChoroplethExample extends React.Component {
 			CRI: { fillKey: 'authorHasTraveledTo' },
 			KOR: { fillKey: 'authorHasTraveledTo' },
 			DEU: { fillKey: 'authorHasTraveledTo' }
-		}
+		},
+		country: {}
 	};
 
 	componentDidMount() {
