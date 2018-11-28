@@ -61,8 +61,9 @@ export default class ChoroplethExample extends React.Component {
 
 	render() {
 		return (
-			<Example label="Choropleth">
+			<Example>
 				<Datamap
+					responsive
 					data={this.state.data}
 					fills={{
 						defaultFill: '#abdda4',
