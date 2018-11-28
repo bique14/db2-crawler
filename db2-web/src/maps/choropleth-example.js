@@ -3,7 +3,7 @@
 import React from 'react';
 
 import Datamap from './datamap';
-import Example from './example';
+import Example from './example'
 
 const colors = d3.scale.category10();
 
@@ -44,24 +44,24 @@ export default class ChoroplethExample extends React.Component {
 		// })
 
 		this.interval = setInterval(() => {
-				this.setState({
-					data: {
-						USA: colors(Math.random() * 10),
-						RUS: colors(Math.random() * 100),
-						AUS: { fillKey: 'authorHasTraveledTo' },
-						BRA: colors(Math.random() * 50),
-						CAN: colors(Math.random() * 50),
-						ZAF: colors(Math.random() * 50),
-						IND: colors(Math.random() * 50),
-						THA: colors(Math.random() * 100)
-					}
-				});
-			}, 2000);
+			this.setState({
+				data: {
+					USA: colors(Math.random() * 10),
+					RUS: colors(Math.random() * 100),
+					AUS: { fillKey: 'authorHasTraveledTo' },
+					BRA: colors(Math.random() * 50),
+					CAN: colors(Math.random() * 50),
+					ZAF: colors(Math.random() * 50),
+					IND: colors(Math.random() * 50),
+					THA: colors(Math.random() * 100)
+				}
+			});
+		}, 2000);
 	}
 
 	render() {
 		return (
-			<Example label="">
+			<Example label="Choropleth">
 				<Datamap
 					data={this.state.data}
 					fills={{
@@ -71,8 +71,7 @@ export default class ChoroplethExample extends React.Component {
 					projection="mercator"
 					updateChoroplethOptions={{ reset: false }}
 				/>
-			</Example>
-		);
+			</Example>);
 	}
 
 }
