@@ -32,3 +32,39 @@
     transform: rotate(360deg);
   }
 }
+
+.table {
+  width: 100%;
+  margin: auto;
+}
+
+.aff {
+  width: 30%;
+}
+
+.ellipsis {
+  position: relative;
+}
+
+.ellipsis span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 5px;
+  white-space: normal;
+  /* overflow: scroll; */
+  /* text-overflow: ellipsis; */
+}
+
+.rows {
+  height: 50px;
+}
+
+.rows .email, .rows .name {
+  width: 12%;
+  /* background-color: blue; */
+}
+
+.rows .rank, .rows .amount {
+  width: 5%;
+}
