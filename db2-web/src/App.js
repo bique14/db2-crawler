@@ -3,6 +3,7 @@ import "./App.css";
 import { Button, Form } from "semantic-ui-react";
 import { chartOptions } from "chart.js";
 import { Table } from "semantic-ui-react";
+import ChoroplethExample  from './maps/choropleth-example'
 
 var data = {
   labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -69,6 +70,8 @@ class App extends Component {
             </Table.Row>
           </Table.Body>
         </Table>
+
+        <ChoroplethExample/>
       </div>
     );
   }
