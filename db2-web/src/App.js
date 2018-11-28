@@ -5,6 +5,24 @@ import { chartOptions } from "chart.js";
 import { Table } from "semantic-ui-react";
 import ChoroplethExample  from './maps/choropleth-example'
 
+const mockup = require('./datas/data.json')
+console.log(mockup)
+
+mockup.map((i) => {
+  console.log(i)
+})
+
+const _data = [
+  {
+    name: 'big',
+    age: 20,
+  },
+  {
+    name: 'orn',
+    age: 21,
+  }
+]
+
 var data = {
   labels: ["January", "February", "March", "April", "May", "June", "July"],
   datasets: [
@@ -30,6 +48,18 @@ var data = {
 var BarChart = require("react-chartjs").Bar;
 
 class App extends Component {
+
+  addTable() {
+    return _data.map(i => {
+      return (
+        <Table.Row>
+          <Table.Cell>{i.name}</Table.Cell>
+          <Table.Cell>{i.age}</Table.Cell>
+        </Table.Row>
+      )
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -68,6 +98,8 @@ class App extends Component {
               <Table.Cell>jilsewris22@yahoo.com</Table.Cell>
               <Table.Cell>180</Table.Cell>
             </Table.Row>
+      {this.addTable()}
+
           </Table.Body>
         </Table>
 
