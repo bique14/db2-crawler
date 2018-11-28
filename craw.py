@@ -403,15 +403,14 @@ def scienceDirect(input, name, first, last):
     # workbook.close()
 
 if __name__ == "__main__":
-    # search = ["moral", "high", "down", "low", "match", "music", "egg", "number"]
-    search = ["doc"]
-    # for i, item in enumerate(search):
-    start_time = time.time() # time for execute
-    now = datetime.datetime.now() # now time
-    # print(item)
-    # input = "https://www.sciencedirect.com/search?qs={}&show=50&sortBy=relevance&offset=0".format(item)
-    input = 'https://www.sciencedirect.com/search?qs=doc&show=25&sortBy=relevance&years=2019&offset=0'
-    name = "BIG"
-    first = "1"
-    last = "1"
-    scienceDirect(input, name, first, last)
+    search = ["moral", "high", "down", "low", "match", "music", "egg", "number"]
+    # search = ["doc"]
+    for i, item in enumerate(search):
+        start_time = time.time() # time for execute
+        now = datetime.datetime.now() # now time
+        # print(item)
+        input = "https://www.sciencedirect.com/search?qs={}&show=50&sortBy=relevance&offset=0".format(item)
+        name = "BIG"
+        first = "1"
+        last = "1"
+        scienceDirect(input, name, first, last)
