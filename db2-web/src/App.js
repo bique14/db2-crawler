@@ -63,7 +63,7 @@ class App extends Component {
           throw BreakException
         } else {
           return all[i].map((data, index) => {
-            if (index >= 10) {
+            if (index >= 20) {
               bool = true
               throw BreakException
             }
@@ -77,13 +77,11 @@ class App extends Component {
     } catch (e) {
       if (e !== BreakException) throw e
     }
-
     return rows
   }
 
   sortCount() {
     const sortCountr = this.getTopRank() && this.getTopRank().sort((a, b) => (a.count < b.count) ? 1 : ((b.count < a.count) ? - 1 : 0))
-    // console.log(sortCountr)
     return sortCountr
   }
 
