@@ -11,7 +11,7 @@ import random
 from pymongo import MongoClient
 import time
 import datetime
-
+import sys
 
 
 connect = MongoClient('localhost', 27017)
@@ -403,7 +403,12 @@ def scienceDirect(input, name, first, last):
     # workbook.close()
 
 if __name__ == "__main__":
-    search = ["memory", "data", "cloud"]
+    # search = ["memory", "data", "cloud"]
+    search = []
+    for i, j in enumerate(sys.argv):
+        if(i==0): 
+            continue
+        search.append(sys.argv[i])
 
     for i, item in enumerate(search):
         start_time = time.time() # time for execute
