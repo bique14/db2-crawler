@@ -119,8 +119,19 @@ class App extends Component {
     this.sortCount() && this.sortCount().map(data => {
       people.push(data)
     })
-
+    let labelsArr = []
+    let graphsArr = []
+    people.forEach( (element,index) =>{
+      if(index > 10){
+        labelsArr.push(element.count);
+        graphsArr.push(element.name);
+      }
+    })
+    Object.keys(graph).forEach((item, index) => {
+      
+    })
     var graph = {
+      // labels :
       labels: [
         people.length && people[0].name,
         people.length && people[1].name,

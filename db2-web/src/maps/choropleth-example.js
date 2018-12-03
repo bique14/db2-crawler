@@ -123,7 +123,7 @@ export default class ChoroplethExample extends React.Component {
 		})
 		console.log(dat)
 
-		dat.map(i => {
+		// dat.map(i => {
 			// console.log(i)
 			// this.setState({
 			// 	data: {
@@ -131,31 +131,31 @@ export default class ChoroplethExample extends React.Component {
 			// 	}
 			// })
 
-			this.setState(prevState => {
-				return {
-					...prevState,
-					data: {
-						...prevState.data,
-						[i]: '#000000'
-					}
-				}
-			})
-		})
+		// 	this.setState(prevState => {
+		// 		return {
+		// 			...prevState,
+		// 			data: {
+		// 				...prevState.data,
+		// 				[i]: '#000000'
+		// 			}
+		// 		}
+		// 	})
+		// })
 
-		console.log(this.state)
+		// console.log(this.state)
 
-		// this.setState({
-		// 	data: {
-		// 		USA: colors(Math.random() * 10),
-		// 		RUS: colors(Math.random() * 100),
-		// 		AUS: { fillKey: 'authorHasTraveledTo' },
-		// 		BRA: colors(Math.random() * 50),
-		// 		CAN: colors(Math.random() * 50),
-		// 		ZAF: colors(Math.random() * 50),
-		// 		IND: colors(Math.random() * 50),
-		// 		THA: colors(Math.random() * 100)
-		// 	}
-		// });
+		this.setState({
+			data: {
+				USA: colors(Math.random() * 10),
+				RUS: colors(Math.random() * 100),
+				AUS: { fillKey: 'authorHasTraveledTo' },
+				BRA: colors(Math.random() * 50),
+				CAN: colors(Math.random() * 50),
+				ZAF: colors(Math.random() * 50),
+				IND: colors(Math.random() * 50),
+				THA: colors(Math.random() * 100)
+			}
+		});
 
 	}
 
